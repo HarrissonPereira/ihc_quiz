@@ -11,6 +11,11 @@ namespace Trabalho_IHC_Quiz
 
         public string Nome { get; set; }
         public int Pontuacao { get; set; }
-        
+
+        public Jogador(string nome)
+        {
+            Nome = nome;
+        }
+
     }
 }
