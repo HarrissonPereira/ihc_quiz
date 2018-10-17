@@ -1,0 +1,10 @@
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\bin\Debug\Trabalho IHC Quiz.exe.config
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\bin\Debug\Trabalho IHC Quiz.exe
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\bin\Debug\Trabalho IHC Quiz.pdb
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\obj\Debug\Trabalho IHC Quiz.csprojResolveAssemblyReference.cache
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\obj\Debug\Trabalho_IHC_Quiz.Form1.resources
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\obj\Debug\Trabalho_IHC_Quiz.Properties.Resources.resources
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\obj\Debug\Trabalho IHC Quiz.csproj.GenerateResource.Cache
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\obj\Debug\Trabalho IHC Quiz.csproj.CoreCompileInputs.cache
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\obj\Debug\Trabalho IHC Quiz.exe
+C:\Users\harri\Desktop\Trabalho IHC Quiz\Trabalho IHC Quiz\obj\Debug\Trabalho IHC Quiz.pdb

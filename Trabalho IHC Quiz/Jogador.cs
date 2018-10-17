@@ -15,6 +15,7 @@ namespace Trabalho_IHC_Quiz
         public Jogador(string nome)
         {
             Nome = nome;
+            Pontuacao = 0;
         }
 
     }
