@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,8 +18,10 @@ namespace Trabalho_IHC_Quiz
         Questao perguntaAtual;
         Questao[] questoesVetor;
         Jogador jogador;
+        bool isTyping = false;
+        int typingCount;
 
-        public void montarQuestionario()
+        public void InicializarQuestionario()
         {
             questoesVetor = new Questao[10]
             {
@@ -30,7 +33,7 @@ namespace Trabalho_IHC_Quiz
             new Questao("Quantas vezes é possível subtrair 10 de 100?", "10", "1", "100", "50", "1", "O número 100 é fundamental para essa pergunta, preste atenção nele."),
             new Questao("Alguns meses têm 30 dias e outros, 31. Quantos meses têm 28 dias durante um período de três anos? ", "12", "3", "6", "36", "36", "A solução está na interpretação da pergunta “quantos”?"),
             new Questao("Um casal tem seis filhos homens, cada filho tem uma irmã. Quantas pessoas há nessa família no total?", "6", "7", "14", "9", "9", "lembre-se de como funciona o parentesco."),
-            new Questao("Se o amanhã de ontem era sexta-feira, que dia é o dia depois de amanhã de ontem?", "Sábado", "Domingo", "Quinta", "Sexta", "Sábado", "Pense nos dias de semana."),
+            new Questao("Se o amanhã de ontem era sexta-feira, que dia é o dia depois de amanhã de ontem?", "Sábado", "Domingo", "Quinta", "Sexta", "Sábado", "Atenção no \"amanhã de ontem\"."),
             new Questao("Três gatos pegam três ratos em três minutos. Quantos minutos 100 gatos levam para capturar 100 ratos?", "100", "3", "300", "9", "3", "Todos os gatos vão atrás dos ratos ao mesmo tempo."),
             new Questao("Fábio foi sozinho até a padaria no centro da cidade. Durante o percurso, encontrou duas garotas passeando com três cachorros, que estavam brincando com dois gatos, que, por sua vez, tinham dois donos. Quantos seres no total foram com Fábio até a padaria?", "4", "2", "0", "9", "0", "A resposta está na pergunta."),
             new Questao("Imagine que em sua frente vão caminhando 2 mães, 2 filhas, uma avó e uma neta. Quantas pessoas são?", "3", "4", "5", "6", "3", "A neta é filha de quem, a vó é mãe de quem?")
@@ -67,14 +70,14 @@ namespace Trabalho_IHC_Quiz
             {
 
                 perguntaAtual = questionario.Pop();
-                pergunta.Text = perguntaAtual.Pergunta;
-
+                pergunta.Text = perguntaAtual.Pergunta;            
                 opcao1.Text = perguntaAtual.Opcao1;
                 opcao2.Text = perguntaAtual.Opcao2;
                 opcao3.Text = perguntaAtual.Opcao3;
                 opcao4.Text = perguntaAtual.Opcao4;
-
-                dica_questao.Text = "Dica: " + perguntaAtual.Dica;
+                dica_questao.Visible = false;
+                dica_questao.ForeColor = Color.Maroon;
+                dica_questao.Text = "Resposta errada!\nDica: " + perguntaAtual.Dica;
 
             }
             else
@@ -83,11 +86,35 @@ namespace Trabalho_IHC_Quiz
                 resultado_panel.Visible = true;
                 resultado_panel.BringToFront();
                 resultado_label.Text = jogador.Nome + ", o você acertou:";
+                resultado_value.ForeColor = CorResultado(jogador.Pontuacao);
                 resultado_value.Text = jogador.Pontuacao + " / 10";
                 jogar_novamente.Enabled = true;
             }
 
             
+        }
+
+        Color CorResultado(int pontuacao)
+        {
+            Color retorno;
+
+            if(pontuacao > 7)
+            {
+                retorno = Color.DarkGreen;
+            }
+            else
+            {
+                if(pontuacao <= 7 && pontuacao > 5)
+                {
+                    retorno = Color.Gold;
+                }
+                else
+                {
+                    retorno = Color.Maroon;
+                }
+            }
+
+            return retorno;
         }
 
         void responder(Questao questao, Button botaoClicado, string opcao)
@@ -104,7 +131,10 @@ namespace Trabalho_IHC_Quiz
                     opcao2.Enabled = false;
                     opcao3.Enabled = false;
                     opcao4.Enabled = false;
-                    
+                    dica_questao.Visible = true;
+                    dica_questao.ForeColor = Color.DarkGreen;
+                    dica_questao.Text = "Resposta certa!";
+
                     continuar.Visible = true;
                     jogador.Pontuacao++;
                 }
@@ -136,17 +166,19 @@ namespace Trabalho_IHC_Quiz
             if(nome_input.Text == "")
             {
                 //Mostrar erro que tá sem nome
-                nome_input.Text = "Você precisa colocar um nome para entrar";                
+                nome_erro.Visible = true;                
             }
             else
             {
                 jogador = new Jogador(nome_input.Text);
-                montarQuestionario();
+                InicializarQuestionario();
                 InserirPergunta();
                 botao_entrar.Visible = false;
                 jogar_novamente.Enabled = false;
                 questionario_painel.Visible = true;
                 questionario_painel.BringToFront();
+                nome_erro.Visible = false;
+                
             }
         }
 
@@ -191,9 +223,7 @@ namespace Trabalho_IHC_Quiz
         }
 
         #endregion
-
-
-
+        
         private void jogar_novamente_Click(object sender, EventArgs e)
         {
             resultado_panel.Visible = false;
@@ -202,5 +232,7 @@ namespace Trabalho_IHC_Quiz
             nome_input.Text = "";
             jogar_novamente.Enabled = false;
         }
+
+       
     }
 }

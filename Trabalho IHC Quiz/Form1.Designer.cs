@@ -37,22 +37,23 @@
             this.dica_questao = new System.Windows.Forms.Label();
             this.pergunta = new System.Windows.Forms.Label();
             this.opcao3 = new System.Windows.Forms.Button();
+            this.continuar = new System.Windows.Forms.Button();
             this.opcao4 = new System.Windows.Forms.Button();
             this.opcao2 = new System.Windows.Forms.Button();
             this.opcao1 = new System.Windows.Forms.Button();
-            this.continuar = new System.Windows.Forms.Button();
             this.resultado_panel = new System.Windows.Forms.Panel();
-            this.jogar_novamente = new System.Windows.Forms.Button();
-            this.resultado_value = new System.Windows.Forms.Label();
             this.resultado_label = new System.Windows.Forms.Label();
+            this.resultado_value = new System.Windows.Forms.Label();
+            this.jogar_novamente = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.nome_erro = new System.Windows.Forms.Label();
             this.questionario_painel.SuspendLayout();
             this.resultado_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // botao_entrar
             // 
-            this.botao_entrar.BackColor = System.Drawing.Color.Yellow;
+            this.botao_entrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(123)))), ((int)(((byte)(217)))));
             this.botao_entrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botao_entrar.Location = new System.Drawing.Point(244, 362);
             this.botao_entrar.Name = "botao_entrar";
@@ -100,7 +101,7 @@
             this.questionario_painel.Controls.Add(this.opcao4);
             this.questionario_painel.Controls.Add(this.opcao2);
             this.questionario_painel.Controls.Add(this.opcao1);
-            this.questionario_painel.Location = new System.Drawing.Point(26, 35);
+            this.questionario_painel.Location = new System.Drawing.Point(23, 21);
             this.questionario_painel.Name = "questionario_painel";
             this.questionario_painel.Size = new System.Drawing.Size(545, 375);
             this.questionario_painel.TabIndex = 4;
@@ -108,7 +109,8 @@
             // 
             // dica_questao
             // 
-            this.dica_questao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dica_questao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dica_questao.ForeColor = System.Drawing.Color.Gold;
             this.dica_questao.Location = new System.Drawing.Point(3, 157);
             this.dica_questao.Name = "dica_questao";
             this.dica_questao.Size = new System.Drawing.Size(539, 45);
@@ -129,7 +131,7 @@
             // 
             // opcao3
             // 
-            this.opcao3.BackColor = System.Drawing.Color.Yellow;
+            this.opcao3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(244)))), ((int)(((byte)(81)))));
             this.opcao3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opcao3.Location = new System.Drawing.Point(86, 264);
             this.opcao3.Name = "opcao3";
@@ -139,9 +141,22 @@
             this.opcao3.UseVisualStyleBackColor = false;
             this.opcao3.Click += new System.EventHandler(this.opcao3_Click);
             // 
+            // continuar
+            // 
+            this.continuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(123)))), ((int)(((byte)(217)))));
+            this.continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.continuar.Location = new System.Drawing.Point(196, 324);
+            this.continuar.Name = "continuar";
+            this.continuar.Size = new System.Drawing.Size(164, 43);
+            this.continuar.TabIndex = 0;
+            this.continuar.Text = "Próxima Pergunta";
+            this.continuar.UseVisualStyleBackColor = false;
+            this.continuar.Visible = false;
+            this.continuar.Click += new System.EventHandler(this.continuar_Click);
+            // 
             // opcao4
             // 
-            this.opcao4.BackColor = System.Drawing.Color.Yellow;
+            this.opcao4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(244)))), ((int)(((byte)(81)))));
             this.opcao4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opcao4.Location = new System.Drawing.Point(317, 264);
             this.opcao4.Name = "opcao4";
@@ -153,7 +168,7 @@
             // 
             // opcao2
             // 
-            this.opcao2.BackColor = System.Drawing.Color.Yellow;
+            this.opcao2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(244)))), ((int)(((byte)(81)))));
             this.opcao2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opcao2.Location = new System.Drawing.Point(317, 205);
             this.opcao2.Name = "opcao2";
@@ -165,7 +180,7 @@
             // 
             // opcao1
             // 
-            this.opcao1.BackColor = System.Drawing.Color.Yellow;
+            this.opcao1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(244)))), ((int)(((byte)(81)))));
             this.opcao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opcao1.Location = new System.Drawing.Point(86, 205);
             this.opcao1.Name = "opcao1";
@@ -175,41 +190,26 @@
             this.opcao1.UseVisualStyleBackColor = false;
             this.opcao1.Click += new System.EventHandler(this.opcao1_Click);
             // 
-            // continuar
-            // 
-            this.continuar.BackColor = System.Drawing.Color.LightGray;
-            this.continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.continuar.Location = new System.Drawing.Point(196, 324);
-            this.continuar.Name = "continuar";
-            this.continuar.Size = new System.Drawing.Size(164, 43);
-            this.continuar.TabIndex = 0;
-            this.continuar.Text = "Continuar";
-            this.continuar.UseVisualStyleBackColor = false;
-            this.continuar.Visible = false;
-            this.continuar.Click += new System.EventHandler(this.continuar_Click);
-            // 
             // resultado_panel
             // 
             this.resultado_panel.Controls.Add(this.resultado_label);
             this.resultado_panel.Controls.Add(this.resultado_value);
             this.resultado_panel.Controls.Add(this.jogar_novamente);
-            this.resultado_panel.Location = new System.Drawing.Point(26, 35);
+            this.resultado_panel.Location = new System.Drawing.Point(23, 21);
             this.resultado_panel.Name = "resultado_panel";
             this.resultado_panel.Size = new System.Drawing.Size(545, 378);
             this.resultado_panel.TabIndex = 5;
             this.resultado_panel.Visible = false;
             // 
-            // jogar_novamente
+            // resultado_label
             // 
-            this.jogar_novamente.BackColor = System.Drawing.Color.Yellow;
-            this.jogar_novamente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jogar_novamente.Location = new System.Drawing.Point(185, 298);
-            this.jogar_novamente.Name = "jogar_novamente";
-            this.jogar_novamente.Size = new System.Drawing.Size(166, 49);
-            this.jogar_novamente.TabIndex = 0;
-            this.jogar_novamente.Text = "Jogar Novamente";
-            this.jogar_novamente.UseVisualStyleBackColor = false;
-            this.jogar_novamente.Click += new System.EventHandler(this.jogar_novamente_Click);
+            this.resultado_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultado_label.Location = new System.Drawing.Point(10, 10);
+            this.resultado_label.Name = "resultado_label";
+            this.resultado_label.Size = new System.Drawing.Size(532, 87);
+            this.resultado_label.TabIndex = 2;
+            this.resultado_label.Text = "O seu resultado é:";
+            this.resultado_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // resultado_value
             // 
@@ -221,15 +221,17 @@
             this.resultado_value.Text = "resultado";
             this.resultado_value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // resultado_label
+            // jogar_novamente
             // 
-            this.resultado_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultado_label.Location = new System.Drawing.Point(4, 3);
-            this.resultado_label.Name = "resultado_label";
-            this.resultado_label.Size = new System.Drawing.Size(538, 94);
-            this.resultado_label.TabIndex = 2;
-            this.resultado_label.Text = "O seu resultado é:";
-            this.resultado_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.jogar_novamente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(123)))), ((int)(((byte)(217)))));
+            this.jogar_novamente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jogar_novamente.Location = new System.Drawing.Point(185, 298);
+            this.jogar_novamente.Name = "jogar_novamente";
+            this.jogar_novamente.Size = new System.Drawing.Size(166, 49);
+            this.jogar_novamente.TabIndex = 0;
+            this.jogar_novamente.Text = "Jogar Novamente";
+            this.jogar_novamente.UseVisualStyleBackColor = false;
+            this.jogar_novamente.Click += new System.EventHandler(this.jogar_novamente_Click);
             // 
             // label2
             // 
@@ -241,19 +243,33 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Digite seu nome";
             // 
+            // nome_erro
+            // 
+            this.nome_erro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nome_erro.ForeColor = System.Drawing.Color.Maroon;
+            this.nome_erro.Location = new System.Drawing.Point(285, 309);
+            this.nome_erro.Name = "nome_erro";
+            this.nome_erro.Size = new System.Drawing.Size(230, 16);
+            this.nome_erro.TabIndex = 6;
+            this.nome_erro.Text = "Você precisa digitar um nome.";
+            this.nome_erro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.nome_erro.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Highlight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(185)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(594, 425);
+            this.Controls.Add(this.nome_erro);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.questionario_painel);
             this.Controls.Add(this.resultado_panel);
+            this.Controls.Add(this.questionario_painel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logo);
             this.Controls.Add(this.nome_input);
             this.Controls.Add(this.botao_entrar);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Racional Quiz";
             this.questionario_painel.ResumeLayout(false);
@@ -282,6 +298,8 @@
         private System.Windows.Forms.Label resultado_value;
         private System.Windows.Forms.Button jogar_novamente;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label nome_erro;
     }
 }
 
